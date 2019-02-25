@@ -21,6 +21,7 @@ ts1 = Trainingsession.new(c1,l1)
 ts2 = Trainingsession.new(c2,l1)
 ts3 = Trainingsession.new(c3,l2)
 
+Trainingsession.get_all_clients(l1)
 
-
-Pry.start
+binding.pry
+"junk"

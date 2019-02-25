@@ -11,4 +11,7 @@ class Location
       Trainingsession.least_clients()
   end
 
+  def self.get_all_clients
+      Trainingsession.get_all_clients(self)
+  end
 end
