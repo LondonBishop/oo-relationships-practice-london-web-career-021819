@@ -4,9 +4,9 @@ class Trainingsession
 
   @@all_trainingsessions =[]
 
-  def initialize(client, trainer, location)
+  def initialize(client, location)
       @client = client
-      @trainer = trainer
+      #@trainer = client.trainer
       @location = location
       @@all_trainingsessions << self
   end
@@ -17,7 +17,7 @@ class Trainingsession
 
   def self.least_clients
       x = @@all_trainingsessions.group_by {|ts| ts.location }
-    binding.pry
+      binding.pry
       return x
   end
 
