@@ -15,14 +15,15 @@ class Trainingsession
       @@all_trainingsessions.select {|ts| ts.client == client }
   end
 
+
   def self.least_clients
       first_time_in = true
       least_client_count = 0
       least_client_object = nil
 
-      x = @@all_trainingsessions.group_by {|ts| ts.location }
+      locationsessions = @@all_trainingsessions.group_by {|ts| ts.location }
 
-      x.each do |location, value|
+      locationsessions.each do |location, value|
           if first_time_in
               least_client_count = value.length
               least_client_object = location
@@ -41,6 +42,31 @@ class Trainingsession
   def self.get_all_clients(location)
         @@all_trainingsessions.select {|ts| ts.location == location }
   end
+
+
+  def self.most_clients
+      first_time_in = true
+      least_client_count = 0
+      least_client_object = nil
+
+      locationsessions = @@all_trainingsessions.group_by {|ts| ts.location }
+
+      locationsessions.each do |location, value|
+          if first_time_in
+              least_client_count = value.length
+              least_client_object = location
+              first_time_in = false
+          else
+              if value.length < least_client_count
+                least_client_count = value.length
+                least_client_object = location
+              end
+          end
+        end
+
+        return least_client_object
+  end
+
 
 
 end

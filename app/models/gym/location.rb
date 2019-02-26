@@ -14,4 +14,10 @@ class Location
   def self.get_all_clients
       Trainingsession.get_all_clients(self)
   end
+
+
+
+
+
+
 end
