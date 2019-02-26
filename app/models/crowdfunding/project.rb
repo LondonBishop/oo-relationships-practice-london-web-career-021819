@@ -29,7 +29,6 @@ class Project
         amountraised.each {|amountraised| amountraised
           r += amountraised
         }
-        #binding.pry
         return r
 
     end
