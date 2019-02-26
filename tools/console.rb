@@ -33,15 +33,13 @@ p1 = u1.create_project("New Bridge", 500000)
 p2 = u1.create_project("Teamaker", 10000)
 p3 = u2.create_project("Crossrail", 10000000)
 
-u1.back_project(p1,10000)
-u2.back_project(p1,10000)
+u1.back_project(p1,600000)
+u2.back_project(p1,1000)
 u2.back_project(p2, 3500)
 
 #y = Project.no_pledges
-returnproject = Project.no_pledges
-binding.pry
-puts returnproject.name
-
-
+#puts Project.no_pledges
+#puts Project.above_goal
+puts Project.most_backers
 #binding.pry
 "junk"

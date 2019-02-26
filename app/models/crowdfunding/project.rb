@@ -33,8 +33,31 @@ class Project
 
     end
 
+    def get_num_pledges
+
+          pledgenumber ={}
+
+          projectpledges =  Pledge.all.select {|pledge| pledge.project == self}
+
+          pledgenumber[:pledge] = self.name
+          pledgenumber[:number] = projectpledges.length
+
+          #binding.pry
+          return pledgenumber
+    end
+
     def self.no_pledges
         all.select {|project| project.raised_amount == 0}
+    end
+
+    def self.above_goal
+          all.select {|project| project.raised_amount > project.pledge_goal_amount}
+    end
+
+    def self.most_backers
+      x =  all.map {|project| project.get_num_pledges}
+      binding.pry
+      x.max
     end
 
     # #### Project
