@@ -19,6 +19,10 @@ class Pledge
         @user
     end
 
+    def self.all
+        @@all_pledges
+    end
+
     # #### Pledge
     # - #project
     #   - returns the project associated with a particular pledge

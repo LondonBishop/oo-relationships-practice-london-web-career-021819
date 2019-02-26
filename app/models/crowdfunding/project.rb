@@ -1,22 +1,41 @@
 class Project
 
-    attr_reader :name, :pledge_goal_amount
+    attr_reader :user, :name, :pledge_goal_amount
 
     @@all_projects = []
 
-    def initialize (name, pledge_goal_amount, user)
+    def initialize (user, name, pledge_goal_amount)
       @user = user
       @name = name
       @pledge_goal_amount = pledge_goal_amount
       @@all_projects << self
     end
 
-    def create(user,name, pledge_goal_amount)
-      @@all_projects << Project.new(user, name, pledge_goal_amount)
+    # def create(user, name, pledge_goal_amount)
+    #     @@all_projects << Project.new(user, name, pledge_goal_amount)
+    # end
+    def self.all
+        @@all_projects
     end
 
-    def back (user, project, amount)
-        Pledge.new(user, project, amount)
+    def back (user, amount)
+        Pledge.new(user, self, amount)
+    end
+
+    def raised_amount
+        r = 0
+        projectpledges =  Pledge.all.select {|pledge| pledge.project == self}
+        amountraised = projectpledges.map {|pledge| pledge.amount}
+        amountraised.each {|amountraised| amountraised
+          r += amountraised
+        }
+        #binding.pry
+        return r
+
+    end
+
+    def self.no_pledges
+        all.select {|project| project.raised_amount == 0}
     end
 
     # #### Project
