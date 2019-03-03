@@ -39,6 +39,7 @@ class User
         return amountraised
     end
 
+
     def self.highest_pledge
 
         highestpledgeamount = 0
