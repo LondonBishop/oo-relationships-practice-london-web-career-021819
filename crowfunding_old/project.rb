@@ -14,6 +14,7 @@ class Project
     # def create(user, name, pledge_goal_amount)
     #     @@all_projects << Project.new(user, name, pledge_goal_amount)
     # end
+
     def self.all
         @@all_projects
     end
@@ -33,11 +34,11 @@ class Project
 
     end
 
-    def get_num_pledges
+    def get_num_pledges 
 
           pledgenumber ={}
 
-          projectpledges =  Pledge.all.select {|pledge| pledge.project == self}
+          projectpledges = Pledge.all.select {|pledge| pledge.project == self}
 
           pledgenumber[:pledge] = self.name
           pledgenumber[:number] = projectpledges.length
